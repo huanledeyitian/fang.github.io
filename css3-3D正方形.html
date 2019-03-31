@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				-webkit-perspective:800;	/*视距---往往给3D元素的父级*/
+			}
+			.box{
+				width: 200px;
+				height: 200px;
+				border:1px solid red ;
+				position: absolute;
+				left: 30%;
+				top: 30%;
+				margin-top: 180px;
+				transform: rotateY(50deg);
+				transform-style: preserve-3d;	/*内部子元素成3D效果*/
+				animation: name 2s ease infinite;
+			}
+			@-webkit-keyframes name{
+				from{transform: rotateX(50deg) rotateX(50deg);}
+				to{transform: rotate(410deg) rotateX(410deg);}
+			}
+			.box>div{
+				width: 200px;
+				height: 200px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				font-size: 30px;
+				line-height:200px;
+				text-align: center;
+			}
+			.box>div:nth-of-type(1){
+				background: red;
+				transform: translateZ(-100px);	/*平移-200px*/
+			}
+			.box>div:nth-of-type(2){
+				background: orange;
+				transform:rotateX(90deg)  translateZ(100px);	/*先x轴旋转90度,然后z轴平移*/
+			}
+			.box>div:nth-of-type(3){
+				background: yellow;
+				transform:rotateX(90deg)  translateZ(-100px);
+			}
+			.box>div:nth-of-type(4){
+				background: green;
+				transform:rotateY(90deg)  translateZ(100px);
+			}
+			.box>div:nth-of-type(5){
+				background: blue;
+				transform:rotateY(90deg)  translateZ(-100px);
+			}
+			.box>div:nth-of-type(6){
+				background:purple;
+				transform: translateZ(100px);
+			}
+			.box:hover div:nth-of-type(1){
+				transform: translateZ(-200px);
+			}
+			.box:hover div:nth-of-type(6){
+				transform: translateZ(200px);
+			}
+			.box:hover div:nth-of-type(2){
+				transform:rotateX(90deg)  translateZ(200px);
+			}
+			.box:hover div:nth-of-type(3){
+				transform:rotateX(90deg)  translateZ(-200px);
+			}
+			.box:hover div:nth-of-type(4){
+				transform:rotateY(90deg)  translateZ(200px);
+			}
+			.box:hover div:nth-of-type(5){
+				transform:rotateY(90deg)  translateZ(-200px);
+			}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+		</div>
+	</body>
+</html>
